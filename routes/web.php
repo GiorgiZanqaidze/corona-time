@@ -16,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [AuthController::class, 'create'])->middleware('guest');
+Route::get('/', [AuthController::class, 'create'])->middleware('guest')->name('login');
+Route::post('login', [AuthController::class, 'login'])->middleware('guest');
 Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
 Route::get('reset-password', [AuthController::class, 'reset'])->middleware('guest');
 Route::get('landing-worldwide', [LandingController::class, 'worldwide'])->middleware('auth')->name('landing-worldwide');
 Route::get('landing-bycountry', [LandingController::class, 'byCountry'])->middleware('auth')->name('landing-bycountry');
+Route::post('logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
