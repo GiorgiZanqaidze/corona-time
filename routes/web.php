@@ -5,7 +5,6 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetPasswordController;
-use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +27,7 @@ Route::get('landing-bycountry', [LandingController::class, 'byCountry'])->middle
 Route::post('logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 Route::get('reset-password', [ResetPasswordController::class, 'show'])->middleware('guest')->name('reset-password.show');
-// Route::get('confirm-password', [ResetPasswordController::class, 'show'])->middleware('guest')->name('reset-password.show');
+Route::get('confirm-password', [ResetPasswordController::class, 'show'])->middleware('guest')->name('reset-password.show');
 Route::get('email-confirmation', function () { return view('confirmation-email'); })->middleware('guest')->name('confirm-password.page');
 Route::get('set-new-password', function () { return view('set-new-password'); })->middleware('guest')->name('set-new-password.page');
 Route::get('sign-in-email', function () { return view('sign-in-email'); })->middleware('guest')->name('sign-in-email.page');
