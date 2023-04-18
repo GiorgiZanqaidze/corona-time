@@ -11,6 +11,7 @@ module.exports = {
       'green': '#0FBA68;',
       'white': '#ffffff',
       'blue': '#2029F3',
+      'yellow': '#EAD621',
       'dark': "#010414",
       'gray': '#808189',
       'bermuda': '#78dcca',
@@ -20,8 +21,11 @@ module.exports = {
       'md': '960px',
       'lg': '1440px',
     },
-
-    extend: {},
+    extend: {
+      opacity: {
+        '08': '.08',
+      }
+    },
   },
   
   plugins: [],
