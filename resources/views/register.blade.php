@@ -10,7 +10,6 @@
                 <p class="font-light text-xs text-gray text-xl">Please enter required info to sign up</p>
                 <div class="mb-6">
                     <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
-                    
                     <input type="username" id="username" name="username" value="{{old('username')}}" class="border-2 {{$errors->has('username') ? 'border-error-red' : 'border-blue'}} p-3 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Enter unique username">
                     @error('username')
                         <span class="text-xs text-error-red"><img src="{{asset('images/remix-icons-fill-system-error-warning-fill.png')}}" class="inline mr-2"/>{{$message}}</span>

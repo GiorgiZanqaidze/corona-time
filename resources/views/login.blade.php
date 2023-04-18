@@ -24,7 +24,7 @@
                 </div>
                 <div class="flex items-start mb-6 relative">
                     <label for="terms" class="ml-2 text-xs font-medium text-gray-900 dark:text-gray-300">
-                        <a href="#" class="text-blue-600 hover:underline dark:text-blue-500 text-right absolute right-4 text-blue text-xs">Forget password?</a>
+                        <a href="/reset-password" class="text-blue-600 hover:underline dark:text-blue-500 text-right absolute right-4 text-blue text-xs">Forget password?</a>
                     </label>
                 </div>
                 <button type="submit" class="text-white bg-green hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 font-bold">Login</button>
