@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [AuthController::class, 'create'])->middleware('guest');
 Route::get('/register', [AuthController::class, 'register'])->middleware('guest');
 Route::get('/reset-password', [AuthController::class, 'reset'])->middleware('guest');
+Route::get('landing-worldwide', [LandingController::class, 'worldwide']);
+Route::get('landing-bycountry', [LandingController::class, 'byCountry']);
