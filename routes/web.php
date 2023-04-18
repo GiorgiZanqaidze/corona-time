@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [AuthController::class, 'create'])->middleware('guest');
-Route::get('/register', [AuthController::class, 'register'])->middleware('guest');
-Route::get('/reset-password', [AuthController::class, 'reset'])->middleware('guest');
+Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
+Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
+Route::get('reset-password', [AuthController::class, 'reset'])->middleware('guest');
 Route::get('landing-worldwide', [LandingController::class, 'worldwide']);
 Route::get('landing-bycountry', [LandingController::class, 'byCountry']);
