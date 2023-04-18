@@ -4,6 +4,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetPasswordController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,3 +32,15 @@ Route::get('reset-password', [ResetPasswordController::class, 'show'])->middlewa
 Route::get('email-confirmation', function () { return view('confirmation-email'); })->middleware('guest')->name('confirm-password.page');
 Route::get('set-new-password', function () { return view('set-new-password'); })->middleware('guest')->name('set-new-password.page');
 Route::get('sign-in-email', function () { return view('sign-in-email'); })->middleware('guest')->name('sign-in-email.page');
+
+Route::post('/reset-password', function (Request $request) {
+	$request->validate(['email' => 'required|email']);
+
+	$status = Password::sendResetLink(
+		$request->only('email')
+	);
+
+	return $status === Password::RESET_LINK_SENT
+				? back()->with(['status' => __($status)])
+				: back()->withErrors(['email' => __($status)]);
+})->middleware('guest')->name('password.email');
