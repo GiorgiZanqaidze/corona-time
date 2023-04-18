@@ -20,5 +20,5 @@ Route::get('/', [AuthController::class, 'create'])->middleware('guest');
 Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
 Route::get('reset-password', [AuthController::class, 'reset'])->middleware('guest');
-Route::get('landing-worldwide', [LandingController::class, 'worldwide']);
-Route::get('landing-bycountry', [LandingController::class, 'byCountry']);
+Route::get('landing-worldwide', [LandingController::class, 'worldwide'])->middleware('auth')->name('landing-worldwide');
+Route::get('landing-bycountry', [LandingController::class, 'byCountry'])->middleware('auth')->name('landing-bycountry');

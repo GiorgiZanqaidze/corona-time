@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
+use App\Models\User;
 use Illuminate\View\View;
 
 class RegisterController extends Controller
@@ -15,6 +16,10 @@ class RegisterController extends Controller
 	public function store(StoreUserRequest $request)
 	{
 		$validated = $request->validated();
-		dd(request()->all());
+		$user = User::create($validated);
+		$user['password'] = bcrypt($user['password']);
+		auth()->login($user);
+		$user->save();
+		return redirect('landing-worldwide');
 	}
 }
