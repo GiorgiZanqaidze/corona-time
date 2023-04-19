@@ -11,19 +11,25 @@
                 </div>
                 <h1 class='font-bold'>{{__('messages.welcome_back')}}</h1>
                 <p class="font-light text-xs text-gray text-xl">{{__('messages.enter_details')}}</p>
-                <div class="mb-6">
+                <div class="mb-6 relative">
                     <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{__('messages.username_or_email')}}</label>
-                    <input id="username" type="text" class="{{$errors->has('username') ? 'border-error-red' : 'border-blue'}} border-2 border-rose-600 p-3 shadow-sm bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark dark:shadow-sm-light" name="username" value="{{ old('username') }}" placeholder="{{__('messages.enter_unique')}}">
+                    <input id="username" type="text" class="border-2 {{$errors->has('username') ? 'border-error-red' : ''}} {{!$errors->has('username') && $errors->any() ? 'border-green' : ''}} p-3 shadow-sm bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:shadow-sm-light" name="username" value="{{ old('username') }}" placeholder="{{__('messages.enter_unique')}}">
                     @error('username')
                         <span class="text-xs text-error-red"><img src="{{asset('images/remix-icons-fill-system-error-warning-fill.png')}}" class="inline mr-2"/>{{$message}}</span>
                     @enderror
+                    @if (!$errors->has('username') && $errors->any())
+                    <img src="{{asset('images/green-icon.png')}}" class="absolute right-2 bottom-[30%] translate-y-[50%]"/>
+                    @endif
                 </div>
-                <div class="mb-6">
+                <div class="mb-6 relative">
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{__('messages.password')}}</label>
-                    <input type="password" name="password" id="password" class="{{$errors->has('password') ? 'border-error-red' : 'border-blue'}} border-2 p-3 shadow-sm bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark dark:shadow-sm-light" placeholder="{{__('messages.fill_in_password')}}">
+                    <input type="password" name="password" id="password" class="border-2 {{$errors->has('password') ? 'border-error-red' : ''}} {{!$errors->has('password') && $errors->any() ? 'border-green' : ''}} p-3 shadow-sm bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:shadow-sm-light" placeholder="{{__('messages.fill_in_password')}}">
                     @error('password')
                         <span class="text-xs text-error-red"><img src="{{asset('images/remix-icons-fill-system-error-warning-fill.png')}}" class="inline mr-2"/>{{$message}}</span>
                     @enderror
+                    @if (!$errors->has('password') && $errors->any())
+                    <img src="{{asset('images/green-icon.png')}}" class="absolute right-2 bottom-[30%] translate-y-[50%]"/>
+                    @endif
                 </div>
                 <div class="flex items-start mb-6 relative">
                     <label for="terms" class="ml-2 text-xs font-medium text-gray-900 dark:text-gray-300">

@@ -11,33 +11,45 @@
                 </div>
                 <h1 class='font-bold'>{{__('messages.welcome_to_coronatime')}}</h1>
                 <p class="font-light text-xs text-gray text-xl">{{__('messages.required_info_to_sign_up')}}</p>
-                <div class="mb-6">
+                <div class="mb-6 relative">
                     <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{__('messages.username')}}</label>
-                    <input type="username" id="username" name="username" value="{{old('username')}}" class="border-2 {{$errors->has('username') ? 'border-error-red' : 'border-blue'}} p-3 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="{{__('messages.unique_username')}}">
+                    <input type="username" id="username" name="username" value="{{old('username')}}" class="border-2 {{$errors->has('username') ? 'border-error-red' : ''}} {{!$errors->has('username') && $errors->any() ? 'border-green' : ''}} p-3 shadow-sm bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:shadow-sm-light" placeholder="{{__('messages.unique_username')}}">
                     @error('username')
                         <span class="text-xs text-error-red"><img src="{{asset('images/remix-icons-fill-system-error-warning-fill.png')}}" class="inline mr-2"/>{{$message}}</span>
                     @enderror
+                    @if (!$errors->has('username') && $errors->any())
+                    <img src="{{asset('images/green-icon.png')}}" class="absolute right-2 bottom-[30%] translate-y-[50%]"/>
+                    @endif
                 </div>
-                <div class="mb-6">
+                <div class="mb-6 relative">
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{__('messages.email')}}</label>
-                    <input type="email" id="email" name="email" value="{{old('email')}}" class="border-2 {{$errors->has('email') ? 'border-error-red' : 'border-blue'}} p-3 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="{{__('messages.enter_your_email')}}">
+                    <input type="email" id="email" name="email" value="{{old('email')}}" class="border-2 {{$errors->has('email') ? 'border-error-red' : ''}} {{!$errors->has('email') && $errors->any() ? 'border-green' : ''}} p-3 shadow-sm bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:shadow-sm-light" placeholder="{{__('messages.enter_your_email')}}">
                     @error('email')
                         <span class="text-xs text-error-red"><img src="{{asset('images/remix-icons-fill-system-error-warning-fill.png')}}" class="inline mr-2"/>{{$message}}</span>
                     @enderror
+                    @if (!$errors->has('email') && $errors->any())
+                    <img src="{{asset('images/green-icon.png')}}" class="absolute right-2 bottom-[30%] translate-y-[50%]"/>
+                    @endif
                 </div>
-                <div class="mb-6">
+                <div class="mb-6 relative">
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{__('messages.password')}}</label>
-                    <input type="password" id="password" name="password" value="{{old('password')}}" class="border-2 {{$errors->has('password') ? 'border-error-red' : 'border-blue'}} p-3 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="{{__('messages.password')}}">
+                    <input type="password" id="password" name="password" value="{{old('password')}}" class="border-2 {{$errors->has('password') ? 'border-error-red' : ''}} {{!$errors->has('password') && $errors->any() ? 'border-green' : ''}} p-3 shadow-sm bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:shadow-sm-light" placeholder="{{__('messages.password')}}">
                     @error('password')
                         <span class="text-xs text-error-red"><img src="{{asset('images/remix-icons-fill-system-error-warning-fill.png')}}" class="inline mr-2"/>{{$message}}</span>
                     @enderror
+                    @if (!$errors->has('password') && $errors->any())
+                    <img src="{{asset('images/green-icon.png')}}" class="absolute right-2 bottom-[30%] translate-y-[50%]"/>
+                    @endif
                 </div>
-                <div class="mb-6">
+                <div class="mb-6 relative">
                     <label for="password_confirmation" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{__('messages.repeat_password')}}</label>
-                    <input type="password" id="password_confirmation" name="password_confirmation" class="border-2 {{$errors->has('password_confirmation') ? 'border-error-red' : 'border-blue'}} p-3 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="{{__('messages.repeat_password')}}">
+                    <input type="password" id="password_confirmation" name="password_confirmation" class="border-2 {{$errors->has('password_confirmation') ? 'border-error-red' : ''}} {{!$errors->has('password_confirmation') && $errors->any() ? 'border-green' : ''}} p-3 shadow-sm bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:shadow-sm-light" placeholder="{{__('messages.repeat_password')}}">
                     @error('password_confirmation')
-                        <span class="text-xs text-error-red">{{$message}}</span>
+                        <span class="text-xs text-error-red"><img src="{{asset('images/remix-icons-fill-system-error-warning-fill.png')}}" class="inline mr-2"/>{{$message}}</span>
                     @enderror
+                    @if (!$errors->has('password_confirmation') && $errors->any())
+                    <img src="{{asset('images/green-icon.png')}}" class="absolute right-2 bottom-[30%] translate-y-[50%]"/>
+                    @endif
                 </div>
                 {{-- <div class="flex items-start mb-6 relative">
                     <div class="flex items-center h-5">
