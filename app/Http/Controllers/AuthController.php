@@ -23,7 +23,7 @@ class AuthController extends Controller
 		if (auth()->attempt([$fieldType => $input['username'], 'password' => $input['password']])) {
 			return redirect()->route('landing-worldwide');
 		} else {
-			return redirect()->route('ogin.create');
+			return redirect()->route('login.create');
 		}
 	}
 

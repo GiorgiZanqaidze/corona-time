@@ -15,7 +15,7 @@ return new class extends Migration {
 			$table->string('code');
 			$table->json('name');
 			$table->integer('confirmed');
-			$table->integer('critical');
+			$table->integer('recovered');
 			$table->integer('deaths');
 		});
 	}

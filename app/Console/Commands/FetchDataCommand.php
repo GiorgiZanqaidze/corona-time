@@ -37,11 +37,11 @@ class FetchDataCommand extends Command
 			$detailData = $detailResponse->json();
 
 			DB::table('countries')->insert([
-				'code'       => $country['code'],
-				'name'       => json_encode($country['name']),
-				'confirmed'  => $detailData['confirmed'],
-				'critical'   => $detailData['critical'],
-				'deaths'     => $detailData['deaths'],
+				'code'        => $country['code'],
+				'name'        => json_encode($country['name']),
+				'confirmed'   => $detailData['confirmed'],
+				'recovered'   => $detailData['recovered'],
+				'deaths'      => $detailData['deaths'],
 			]);
 		}
 	}
