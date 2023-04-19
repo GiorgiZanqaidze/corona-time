@@ -14,7 +14,9 @@ return new class extends Migration {
 			$table->id();
 			$table->string('code');
 			$table->json('name');
-			$table->timestamps();
+			$table->integer('confirmed');
+			$table->integer('recovered');
+			$table->integer('deaths');
 		});
 	}
 
