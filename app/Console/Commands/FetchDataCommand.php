@@ -31,9 +31,17 @@ class FetchDataCommand extends Command
 		$data = $response->json();
 
 		foreach ($data as $country) {
+			$detailResponse = Http::post('https://devtest.ge/get-country-statistics', [
+				'code' => $country['code'],
+			]);
+			$detailData = $detailResponse->json();
+
 			DB::table('countries')->insert([
 				'code'       => $country['code'],
 				'name'       => json_encode($country['name']),
+				'confirmed'  => $detailData['confirmed'],
+				'critical'   => $detailData['critical'],
+				'deaths'     => $detailData['deaths'],
 			]);
 		}
 	}
