@@ -27,7 +27,7 @@ Route::get('landing-bycountry', [LandingController::class, 'byCountry'])->middle
 Route::post('logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 Route::get('reset-password', [ResetPasswordController::class, 'show'])->middleware('guest')->name('reset-password.show');
-Route::get('confirm-password', [ResetPasswordController::class, 'show'])->middleware('guest')->name('reset-password.show');
+Route::get('confirm-password', [ResetPasswordController::class, 'show'])->middleware('guest')->name('confirm-password.show');
 Route::get('confirmation-email', function () { return view('confirmation-email'); })->middleware('guest')->name('confirm-password.page');
 Route::get('set-new-password', function () { return view('set-new-password'); })->middleware('guest')->name('set-new-password.page');
 Route::get('sign-in-email', function () { return view('sign-in-email'); })->middleware('guest')->name('sign-in-email.page');
