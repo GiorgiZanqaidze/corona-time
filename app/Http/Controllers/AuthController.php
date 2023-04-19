@@ -4,17 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginUserRequest;
 use Illuminate\Auth\Authenticatable;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class AuthController extends Controller
 {
 	use Authenticatable;
 
-	public function create()
+	public function create(): View
 	{
 		return view('login');
 	}
 
-	public function login(LoginUserRequest $request)
+	public function login(LoginUserRequest $request): RedirectResponse
 	{
 		$input = $request->all();
 
@@ -27,12 +29,12 @@ class AuthController extends Controller
 		}
 	}
 
-	public function reset()
+	public function reset(): View
 	{
 		return view('reset-password');
 	}
 
-	public function logout()
+	public function logout(): RedirectResponse
 	{
 		auth()->logout();
 		return redirect('/');
