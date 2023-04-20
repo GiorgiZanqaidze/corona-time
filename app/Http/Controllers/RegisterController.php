@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
+use App\Mail\MailRegister;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
 class RegisterController extends Controller
@@ -19,8 +21,11 @@ class RegisterController extends Controller
 		$validated = $request->validated();
 		$user = User::create($validated);
 		$user['password'] = bcrypt($user['password']);
-		auth()->login($user);
+		// auth()->login($user);
 		$user->save();
-		return redirect('landing-worldwide');
+
+		Mail::to('fake@gmail.com')->send(new MailRegister());
+
+		return redirect('/register');
 	}
 }
