@@ -4,7 +4,7 @@
             <div class="mb-10">
                 @include('components.lang-dropdown')
             </div>
-            <form class="flex flex-col gap-3" method="POST" action="/login">
+            <form class="flex flex-col gap-3" method="POST" action="/post-login">
             @csrf
                 <div>
                     <img src="{{asset("images/Group 1@2x.png")}}" class="w-2/4"/>

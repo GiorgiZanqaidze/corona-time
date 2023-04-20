@@ -7,8 +7,7 @@
             <div class="flex justify-center">
                 <img src="{{asset(asset('images/icons8-checked 1.png'))}}" class="w-14"/>
             </div>
-            <p>Your account is confirmed, you can sign in</p>
-            <a href="/" class="text-white bg-green hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 font-bold">SIGN IN</a>
+            <p>We have sent you a confirmation email</p>
         </div>
     </div>
 </x-layout>

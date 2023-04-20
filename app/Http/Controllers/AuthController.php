@@ -4,17 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginUserRequest;
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
 	use Authenticatable;
-
-	public function create(): View
-	{
-		return view('login');
-	}
 
 	public function login(LoginUserRequest $request): RedirectResponse
 	{
@@ -23,20 +18,43 @@ class AuthController extends Controller
 		$fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
 		if (auth()->attempt([$fieldType => $input['username'], 'password' => $input['password']])) {
-			return redirect()->route('landing-worldwide');
+			return redirect()->route('worldwide');
 		} else {
 			return redirect()->route('login.create');
 		}
-	}
-
-	public function reset(): View
-	{
-		return view('reset-password');
 	}
 
 	public function logout(): RedirectResponse
 	{
 		auth()->logout();
 		return redirect('/');
+	}
+
+	public function index()
+	{
+		return view('login');
+	}
+
+	public function registration()
+	{
+		return view('register');
+	}
+
+	public function worldwide()
+	{
+		if (Auth::check()) {
+			return view('landing-worldwide');
+		}
+
+		return redirect('/')->withSuccess('Opps! You do not have access');
+	}
+
+	public function byCountry()
+	{
+		if (Auth::check()) {
+			return view('landing-bycountry');
+		}
+
+		return redirect('/')->withSuccess('Opps! You do not have access');
 	}
 }
