@@ -17,23 +17,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [AuthController::class, 'index'])->middleware('guest')->name('login');
+Route::get('/', function () { return view('login'); })->middleware('guest')->name('login');
 Route::post('post-login', [AuthController::class, 'login'])->middleware('guest')->name('login.post');
 Route::get('landing-worldwide', [AuthController::class, 'worldwide'])->name('worldwide')->middleware(['auth', 'verify_email']);
 Route::get('landing-bycountry', [AuthController::class, 'byCountry'])->name('by-country')->middleware(['auth', 'verify_email']);
-Route::post('logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
+Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middleware(['auth', 'verify_email']);
 
-Route::get('register', [RegisterController::class, 'registration'])->middleware('guest')->name('register');
+Route::get('register', function () { return view('register'); })->middleware('guest')->name('register');
 Route::post('register', [RegisterController::class, 'postRegistration'])->middleware('guest')->name('register.store');
+Route::get('show-email', function () { return view('show-email'); })->name('show-email');
 Route::get('account/verify/{token}', [RegisterController::class, 'verifyAccount'])->name('user.verify');
 
-Route::get('show-email', function () { return view('show-email'); })->name('show-email');
-
-// Route::get('reset-password', [ResetPasswordController::class, 'show'])->middleware('guest')->name('reset-password.show');
-// Route::get('confirm-password', [ResetPasswordController::class, 'show'])->middleware('guest')->name('confirm-password.show');
-
-// Route::get('set-new-password', function () { return view('set-new-password'); })->middleware('guest')->name('set-new-password.page');
-// Route::get('confirmation-email', function () { return view('sign-in-email'); })->middleware('guest')->name('sign-in-email.page');
+Route::post('reset-password', [ResetPasswordController::class, 'postPassword'])->middleware('guest')->name('reset-password');
+Route::get('account/verify/password/{token}', [ResetPasswordController::class, 'edit'])->middleware('guest')->name('user.update');
+Route::patch('account/verify/password/{token}', [ResetPasswordController::class, 'update'])->middleware('guest')->name('user.edit');
+Route::get('set-new-password', function () { return view('set-new-password'); })->middleware('guest')->name('set-new-password');
+Route::get('reset-password', function () { return view('reset-password'); })->middleware('guest')->name('reset-password');
+Route::get('confirmation-password', function () { return view('confirmation-password'); })->middleware('guest')->name('confirmation-password');
 
 // language route
 Route::get('lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang.switch');

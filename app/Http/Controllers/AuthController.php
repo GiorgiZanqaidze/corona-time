@@ -20,7 +20,7 @@ class AuthController extends Controller
 		if (auth()->attempt([$fieldType => $input['username'], 'password' => $input['password']])) {
 			return redirect()->route('worldwide');
 		} else {
-			return redirect()->route('login.create');
+			return redirect()->route('login');
 		}
 	}
 
@@ -28,16 +28,6 @@ class AuthController extends Controller
 	{
 		auth()->logout();
 		return redirect('/');
-	}
-
-	public function index()
-	{
-		return view('login');
-	}
-
-	public function registration()
-	{
-		return view('register');
 	}
 
 	public function worldwide()
