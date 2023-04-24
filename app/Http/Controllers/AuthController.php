@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginUserRequest;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -28,23 +27,5 @@ class AuthController extends Controller
 	{
 		auth()->logout();
 		return redirect('/');
-	}
-
-	public function worldwide()
-	{
-		if (Auth::check()) {
-			return view('landing-worldwide');
-		}
-
-		return redirect('/')->withSuccess('Opps! You do not have access');
-	}
-
-	public function byCountry()
-	{
-		if (Auth::check()) {
-			return view('landing-bycountry');
-		}
-
-		return redirect('/')->withSuccess('Opps! You do not have access');
 	}
 }

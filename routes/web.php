@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetPasswordController;
@@ -19,9 +20,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () { return view('login'); })->middleware('guest')->name('login');
 Route::post('post-login', [AuthController::class, 'login'])->middleware('guest')->name('login.post');
-Route::get('landing-worldwide', [AuthController::class, 'worldwide'])->name('worldwide')->middleware(['auth', 'verify_email']);
-Route::get('landing-bycountry', [AuthController::class, 'byCountry'])->name('by-country')->middleware(['auth', 'verify_email']);
 Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middleware(['auth', 'verify_email']);
+
+Route::get('landing-worldwide', [DashboardController::class, 'worldwide'])->name('worldwide')->middleware(['auth', 'verify_email']);
+Route::get('landing-bycountry', [DashboardController::class, 'byCountry'])->name('by-country')->middleware(['auth', 'verify_email']);
 
 Route::get('register', function () { return view('register'); })->middleware('guest')->name('register');
 Route::post('register', [RegisterController::class, 'postRegistration'])->middleware('guest')->name('register.store');

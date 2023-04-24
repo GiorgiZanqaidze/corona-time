@@ -17,6 +17,8 @@ return new class extends Migration {
 			$table->integer('confirmed');
 			$table->integer('recovered');
 			$table->integer('deaths');
+			$table->string('updated_at');
+			$table->string('created_at');
 		});
 	}
 

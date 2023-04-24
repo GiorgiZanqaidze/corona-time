@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Country;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class FetchDataCommand extends Command
@@ -36,12 +36,15 @@ class FetchDataCommand extends Command
 			]);
 			$detailData = $detailResponse->json();
 
-			DB::table('countries')->insert([
-				'code'        => $country['code'],
-				'name'        => json_encode($country['name']),
-				'confirmed'   => $detailData['confirmed'],
-				'recovered'   => $detailData['recovered'],
-				'deaths'      => $detailData['deaths'],
+			Country::create([
+				'name' => [
+					'en' => $country['name']['en'],
+					'ka' => $country['name']['ka'],
+				],
+				'code'      => $country['code'],
+				'confirmed' => $detailData['confirmed'],
+				'recovered' => $detailData['recovered'],
+				'deaths'    => $detailData['deaths'],
 			]);
 		}
 	}
