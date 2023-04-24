@@ -16,6 +16,7 @@ module.exports = {
       'gray': '#808189',
       'bermuda': '#78dcca',
       'error-red': '#CC1E1E',
+      'light-gray': '#F6F6F7',
     },
     screens: {
       'sm': '576px',
@@ -29,5 +30,7 @@ module.exports = {
     },
   },
   
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar')({ nocompatible: true }),
+  ],
 }
