@@ -12,11 +12,6 @@ use Illuminate\Http\RedirectResponse;
 
 class RegisterController extends Controller
 {
-	public function registration(): View
-	{
-		return view('register');
-	}
-
 	public function postRegistration(StoreUserRequest $request): RedirectResponse
 	{
 		$request->validated();
@@ -34,7 +29,7 @@ class RegisterController extends Controller
 		return redirect('show-email')->withSuccess('Great! You have Successfully loggedin');
 	}
 
-	public function create(array $data)
+	public function create(array $data): object
 	{
 		return User::create([
 			'username'       => $data['username'],
@@ -47,14 +42,10 @@ class RegisterController extends Controller
 	{
 		$verifyUser = User::where('remember_token', $token)->first();
 
-		$message = 'Sorry your email cannot be identified.';
-
 		if (!is_null($verifyUser)) {
 			if (!$verifyUser->email_verified) {
 				$verifyUser->email_verified = 1;
 				$verifyUser->save();
-			} else {
-				$message = 'Your e-mail is already verified. You can now login.';
 			}
 		}
 
