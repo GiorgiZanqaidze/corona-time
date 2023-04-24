@@ -28,16 +28,17 @@ class DashboardController extends Controller
 
 	public function byCountry(Request $request): View
 	{
-		$searchQuery = $request->query('sort_by');
-		// $sort_by = request()->input('sort_by', 'name');
-		if (request('search') || request('sort_by')) {
-			dd($searchQuery);
-			$country = Country::where('name', 'like', '%' . request('search') . '%')
-			->orWhere()
+		$name = request('search');
+		$sort = request('sort_by');
+		if (request('search')) {
+			$country = Country::where('name', 'like', '%' . $name . '%')->orderBy('name')->get();
+		} elseif (request('sort_by')) {
+			$country = Country::orderBy($sort)
 			->get();
-			$country->orderBy(request('sort_by', 'asc'))->get();
-		// dd($sort_by);
-		// $country = Country::orderBy($sort_by, 'asc')->get();
+		} elseif (request('sort_by')) {
+			$country = Country::where('name', 'like', '%' . $name . '%')
+			->orderBy($sort)
+			->get();
 		} else {
 			$country = Country::all();
 		}

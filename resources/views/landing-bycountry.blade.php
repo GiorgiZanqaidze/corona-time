@@ -3,6 +3,11 @@
         <div>
             <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2">
                 <form method="GET" class="relative">
+
+                    @if (request('sort_by')) 
+                        <input type='hidden' name="sort_by" value="{{request('sort_by')}}" />
+                    @endif
+
                     <input 
                     type="text" 
                      name="search"
@@ -20,16 +25,16 @@
                             <thead class="text-xs text-gray-700 uppercase bg-light-gray dark:bg-gray-700 dark:text-gray-400">
                                 <tr>    
                                     <th scope="col" class="px-6 py-3">
-                                        <a href="?sort_by=name">{{__('messages.location')}}</a>
+                                        <a href="?sort_by=name&{{http_build_query(request()->except('sort_by'))}}">{{__('messages.location')}}</a>
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        <a href="?sort_by=new_cases">{{__('messages.new_cases')}}</a>
+                                        <a href="?sort_by=confirmed&{{http_build_query(request()->except('sort_by'))}}">{{__('messages.new_cases')}}</a>
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        <a href="?sort_by=deaths">{{__('messages.deaths')}}</a>
+                                        <a href="?sort_by=deaths&{{http_build_query(request()->except('sort_by'))}}">{{__('messages.deaths')}}</a>
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        <a href="?sort_by=recovered">{{__('messages.recovered')}}</a>
+                                        <a href="?sort_by=recovered&{{http_build_query(request()->except('sort_by'))}}">{{__('messages.recovered')}}</a>
                                     </th>
                                 </tr>
                             </thead>
