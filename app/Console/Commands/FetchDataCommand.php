@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Country;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -36,13 +37,34 @@ class FetchDataCommand extends Command
 			]);
 			$detailData = $detailResponse->json();
 
-			DB::table('countries')->insert([
-				'code'        => $country['code'],
-				'name'        => json_encode($country['name']),
-				'confirmed'   => $detailData['confirmed'],
-				'recovered'   => $detailData['recovered'],
-				'deaths'      => $detailData['deaths'],
+			// $insertCountry = new Country();
+			// $insertCountry->name = $insertCountry->setTranslations('name', ['en' => $country['name']['en'], 'ka' => $country['name']['ka']]);
+			// $insertCountry->code = $country['code'];
+			// $insertCountry->confirmed = $detailData['confirmed'];
+			// $insertCountry->recovered = $detailData['recovered'];
+			// $insertCountry->deaths = $detailData['deaths'];
+			// $insertCountry->save();
+
+			// var_dump($country['name']['en']);
+			Country::create([
+				'name' => [
+					'en' => $country['name']['en'],
+					'ka' => $country['name']['ka'],
+				],
+				'code'      => $country['code'],
+				'confirmed' => $detailData['confirmed'],
+				'recovered' => $detailData['recovered'],
+				'deaths'    => $detailData['deaths'],
 			]);
+			// var_dump($insertCountry);
+
+			// DB::table('countries')->insert([
+			// 	'code'        => $country['code'],
+			// 	'name'        => $name,
+			// 	'confirmed'   => $detailData['confirmed'],
+			// 	'recovered'   => $detailData['recovered'],
+			// 	'deaths'      => $detailData['deaths'],
+			// ]);
 		}
 	}
 }
