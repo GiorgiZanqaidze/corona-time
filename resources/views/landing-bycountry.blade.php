@@ -20,16 +20,16 @@
                             <thead class="text-xs text-gray-700 uppercase bg-light-gray dark:bg-gray-700 dark:text-gray-400">
                                 <tr>    
                                     <th scope="col" class="px-6 py-3">
-                                        <a href="?sort_by=name">Location</a>
+                                        <a href="?sort_by=name">{{__('messages.location')}}</a>
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        <a href="?sort_by=new_cases">New cases</a>
+                                        <a href="?sort_by=new_cases">{{__('messages.new_cases')}}</a>
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        <a href="?sort_by=deaths">Deaths</a>
+                                        <a href="?sort_by=deaths">{{__('messages.deaths')}}</a>
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        <a href="?sort_by=recovered">Recovered</a>
+                                        <a href="?sort_by=recovered">{{__('messages.recovered')}}</a>
                                     </th>
                                 </tr>
                             </thead>

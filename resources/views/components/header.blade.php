@@ -25,7 +25,7 @@
     <div>
         <h1>{{$infoType}}</h1>
     </div>
-    <div class="flex gap-10 border-b border-red-500">
+    <div class="flex gap-10 border-b border-light-gray">
         <a href="/landing-worldwide" class="{{ request()->route()->uri === 'landing-worldwide' ? 'border-b-2' : ''}} ">{{__('messages.Worldwide')}}</a>
         <a href="/landing-bycountry" class="{{ request()->route()->uri === 'landing-bycountry' ? 'border-b-2' : ''}} ">{{__('messages.by_country')}}</a>
     </div>

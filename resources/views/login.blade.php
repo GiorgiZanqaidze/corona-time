@@ -1,6 +1,6 @@
 <x-layout>
     <div class="flex gap-5 justify-center lg:justify-between min-h-screen">
-        <div class="lg:ml-40 mt-20 min-vh-100 w-35 lg:w-30 max-w-30">
+        <div class="lg:ml-40 mt-20 min-vh-100 w-35 lg:w-30 max-w-30 mb-6">
             <div class="mb-10">
                 @include('components.lang-dropdown')
             </div>
