@@ -7,7 +7,7 @@
             <div class="flex justify-center">
                 <img src="{{asset(asset('images/icons8-checked 1.png'))}}" class="w-14"/>
             </div>
-            <p>We have sent you a confirmation email</p>
+            <p class="mt-5">{{__('messages.email_confirmation')}}</p>
         </div>
     </div>
 </x-layout>
