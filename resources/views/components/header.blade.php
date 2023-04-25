@@ -1,33 +1,50 @@
 @props(['infoType'])
 
-<div class="mx-10 my-5 flex flex-col gap-5">
-    <header>
+<div class="sm:mx-10 my-5 flex flex-col gap-5">
+    <header class="px-5 sm:px-0">
         <nav class="bg-white border-gray-200 dark:bg-gray-800">
-            <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+            <div class="flex justify-between items-center mx-auto max-w-screen-xl">
                 <img src="{{asset('images/Group 1@2x.png')}}" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-                <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
-                    <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                        @include('components.lang-dropdown')
-                        <li>
-                            <p href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 bold">{{ucwords(auth()->user()->username)}}</p>
-                        </li>
-                        <li>
-                            <form action="/logout" method="POST">
-                            @csrf
-                            <button class="text-center text-center">{{__('messages.logout')}}<button>
-                            </form>
-                        </li>
+                <div class="items-center w-full flex w-auto order-1 justify-self-end" id="mobile-menu-2">
+                    <ul class="flex mt-4 font-medium space-x-8 mt-0 ">
+                        <div class="hidden sm:block sm:flex gap-5">
+                            <div>
+                                @include('components.lang-dropdown')
+                            </div>
+                            <li>
+                                <p class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 bold">{{ucwords(auth()->user()->username)}}</p>
+                            </li>
+                            <li>
+                                <form action="/logout" method="POST">
+                                @csrf
+                                <button class="text-center text-center">{{__('messages.logout')}}<button>
+                                </form>
+                            </li>
+                        </div>
+                        <div class="flex gap-5 sm:hidden">
+                            @include('components.lang-dropdown')
+                            <div x-data="{ open: false }" @click.away="open = false" class="relative">
+                                <button @click="open = !open"><img src="{{asset('images/remix-icons-line-system-Group.png')}}" alt="arrow" class="text-sm inline"></button>
+                                <div x-show="open" class="absolute flex flex-col gap-2 mt-2">
+                                    <p class="text-sm block py-2 pr-4 pl-3 text-gray-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 bold">{{ucwords(auth()->user()->username)}}</p>
+                                    <form action="/logout" method="POST">
+                                        @csrf
+                                        <button class="text-center text-center text-sm sm:text-base">{{__('messages.logout')}}<button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div>
+    <div class="px-5 sm:px-0">
         <h1>{{$infoType}}</h1>
     </div>
-    <div class="flex gap-10 border-b border-light-gray">
-        <a href="/landing-worldwide" class="{{ request()->route()->uri === 'landing-worldwide' ? 'border-b-2' : ''}} ">{{__('messages.Worldwide')}}</a>
-        <a href="/landing-bycountry" class="{{ request()->route()->uri === 'landing-bycountry' ? 'border-b-2' : ''}} ">{{__('messages.by_country')}}</a>
+    <div class="flex gap-10 border-b border-light-gray px-5 sm:px-0">
+        <a href="/landing-worldwide" class="{{ request()->route()->uri === 'landing-worldwide' ? 'border-b-2' : ''}} text-sm sm:text-base">{{__('messages.Worldwide')}}</a>
+        <a href="/landing-bycountry" class="{{ request()->route()->uri === 'landing-bycountry' ? 'border-b-2' : ''}} text-sm sm:text-base">{{__('messages.by_country')}}</a>
     </div>
     <div>
         {{$slot}}

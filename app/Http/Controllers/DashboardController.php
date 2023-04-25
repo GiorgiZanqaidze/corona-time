@@ -28,6 +28,11 @@ class DashboardController extends Controller
 
 	public function byCountry(Request $request): View
 	{
+		$countryData = Country::all();
+		$confirmed = $countryData->sum('confirmed');
+		$recovered = $countryData->sum('recovered');
+		$deaths = $countryData->sum('deaths');
+
 		$name = request('search');
 		$sort = request('sort_by');
 		if (request('search')) {
@@ -44,7 +49,12 @@ class DashboardController extends Controller
 		}
 
 		if (Auth::check()) {
-			return view('landing-bycountry', ['allCountry' => $country]);
+			return view('landing-bycountry', [
+				'allCountry' => $country,
+				'confirmed'  => $confirmed,
+				'recovered'  => $recovered,
+				'deaths'     => $deaths,
+			]);
 		}
 
 		return redirect('/')->withSuccess('Opps! You do not have access');

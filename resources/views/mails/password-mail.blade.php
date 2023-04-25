@@ -45,10 +45,10 @@
     </style>
     <div class="flex">
         <div class="center-div">
-            <h1>Confirmation email</h1>
-            <p>click this button to reset your password</p>
+            <h1>Recover password</h1>
+            <p>click this button to recover a password</p>
             <div class="verify">
-                <a href="{{ route('user.update', $token) }}">VERIFY EMAIL</a>
+                <a href="{{ route('user.update', $token) }}">RECOVER PASSWORD</a>
             </div>
         </div>
     </div>
