@@ -31,11 +31,6 @@
                     <img src="{{asset('images/green-icon.png')}}" class="absolute right-2 bottom-[30%] translate-y-[50%]"/>
                     @endif
                 </div>
-                {{-- <div class="flex items-start mb-6 relative">
-                    <label for="terms" class="ml-2 text-xs font-medium text-gray-900 dark:text-gray-300">
-                        <a href="/reset-password" class="text-blue-600 hover:underline dark:text-blue-500 text-right absolute right-4 text-blue text-xs">{{__('messages.forget_password')}}?</a>
-                    </label>
-                </div> --}}
                 <div class="flex items-start mb-6 relative">
                     <div class="flex items-center h-5">
                         <input id="terms" type="checkbox" name="remember" value="1" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800">

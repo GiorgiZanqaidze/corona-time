@@ -42,7 +42,7 @@
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-light-gray border rounded-lg overflow-hidden relative">
                             <thead class="text-xs text-gray-700 uppercase bg-light-gray dark:bg-gray-700 dark:text-gray-400">
                                 <tr>    
-                                    <th scope="col" class="py-3 w-10 pr-1 text-[12px] sm:text-[14px] md:text-sm">
+                                    <th scope="col" class="py-3 w-10 pr-1 text-[10px] sm:text-[14px] md:text-sm">
                                         <a href="?sort_by=name&{{http_build_query(request()->except('sort_by'))}}">{{__('messages.location')}}
                                             {{-- <div class="inline">
                                                 <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-up-fill.png')}}" class="inline" alt="">
@@ -50,13 +50,13 @@
                                             </div> --}}
                                         </a>
                                     </th>
-                                    <th scope="col" class="py-3 pr-1 text-[12px] sm:text-[14px] md:text-sm">
+                                    <th scope="col" class="py-3 pr-1 text-[10px] sm:text-[14px] md:text-sm">
                                         <a href="?sort_by=confirmed&{{http_build_query(request()->except('sort_by'))}}">{{__('messages.new_cases')}}</a>
                                     </th>
-                                    <th scope="col" class="py-3 pr-1 text-[12px] sm:text-[14px] md:text-sm">
+                                    <th scope="col" class="py-3 pr-1 text-[10px] sm:text-[14px] md:text-sm">
                                         <a href="?sort_by=deaths&{{http_build_query(request()->except('sort_by'))}}">{{__('messages.deaths')}}</a>
                                     </th>
-                                    <th scope="col" class="py-3 pr-1 text-[12px] sm:text-[14px] md:text-sm">
+                                    <th scope="col" class="py-3 pr-1 text-[10px] sm:text-[14px] md:text-sm">
                                         <a href="?sort_by=recovered&{{http_build_query(request()->except('sort_by'))}}">{{__('messages.recovered')}}</a>
                                     </th>
                                 </tr>
