@@ -38,16 +38,16 @@
                 
             </div>
             @if ($allCountry->count())
-            <div class="relative h-96 bg-blue-500 overflow-y-scroll">
+            <div class="relative h-96 overflow-y-scroll">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-light-gray border rounded-lg overflow-hidden relative">
                             <thead class="text-xs text-gray-700 uppercase bg-light-gray dark:bg-gray-700 dark:text-gray-400">
                                 <tr>    
                                     <th scope="col" class="py-3 w-10 pr-1 text-[12px] sm:text-[14px] md:text-sm">
                                         <a href="?sort_by=name&{{http_build_query(request()->except('sort_by'))}}">{{__('messages.location')}}
-                                            <div class="inline">
+                                            {{-- <div class="inline">
                                                 <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-up-fill.png')}}" class="inline" alt="">
                                                 <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill.png')}}" class="inline" alt="">
-                                            </div>
+                                            </div> --}}
                                         </a>
                                     </th>
                                     <th scope="col" class="py-3 pr-1 text-[12px] sm:text-[14px] md:text-sm">

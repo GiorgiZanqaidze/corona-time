@@ -43,4 +43,5 @@ return [
 	'new_cases'                                => 'New cases',
 	'deaths'                                   => 'Deaths',
 	'recovered'                                => 'Recovered',
+	'remember_device'                          => 'Remember this device',
 ];

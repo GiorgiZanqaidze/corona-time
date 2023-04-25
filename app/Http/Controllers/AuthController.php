@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginUserRequest;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -16,7 +17,7 @@ class AuthController extends Controller
 
 		$fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
-		if (auth()->attempt([$fieldType => $input['username'], 'password' => $input['password']])) {
+		if (Auth::attempt([$fieldType => $input['username'], 'password' => $input['password']], $request->has('remember'))) {
 			return redirect()->route('worldwide');
 		} else {
 			return redirect()->route('login');
