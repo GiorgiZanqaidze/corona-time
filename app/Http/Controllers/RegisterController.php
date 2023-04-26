@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
-use Hash;
 use Illuminate\Http\RedirectResponse;
 
 class RegisterController extends Controller
@@ -16,9 +15,10 @@ class RegisterController extends Controller
 	{
 		$request->validated();
 		$data = $request->post();
-		$createUser = $this->create($data);
+		$createUser = User::create($data);
 		$token = Str::random(64);
 		$createUser->remember_token = $token;
+		$createUser->password = bcrypt($request->password);
 		$createUser->save();
 
 		Mail::send('mails.register-mail', ['token' => $token], function ($message) use ($request) {
@@ -27,15 +27,6 @@ class RegisterController extends Controller
 		});
 
 		return redirect('show-email')->withSuccess('Great! You have Successfully loggedin');
-	}
-
-	public function create(array $data): object
-	{
-		return User::create([
-			'username'       => $data['username'],
-			'email'          => $data['email'],
-			'password'       => Hash::make($data['password']),
-		]);
 	}
 
 	public function verifyAccount($token): View
