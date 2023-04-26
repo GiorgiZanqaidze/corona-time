@@ -51,12 +51,6 @@
                     <img src="{{asset('images/green-icon.png')}}" class="absolute right-2 bottom-[30%] translate-y-[50%]"/>
                     @endif
                 </div>
-                {{-- <div class="flex items-start mb-6 relative">
-                    <div class="flex items-center h-5">
-                    <input id="terms" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required>
-                    </div>
-                    <label for="terms" class="ml-2 text-xs font-medium text-gray-900 dark:text-gray-300">Remember this device</label>
-                </div> --}}
                 <button type="submit" class="text-white bg-green hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 font-bold">{{__('messages.sign_up')}}</button>
                 <span class="text-xs text-center text-gray">{{__('messages.already_have_an_account')}}? <strong><a href="/" class="hover:underline text-dark">{{__('messages.login')}}</a></strong></p>
             </form>
