@@ -88,4 +88,15 @@ class AuthTest extends TestCase
 
 		$response->assertRedirect('/landing-worldwide');
 	}
+
+	public function test_when_user_is_not_logged_in_Dont_let_him_to_the_logout_route()
+	{
+		$this->post('/logout')->assertRedirect('/');
+	}
+
+	public function test_user_can_successfully_logout()
+	{
+		$user = User::factory()->create();
+		$this->actingAs($user)->post('/logout')->assertRedirect('/');
+	}
 }
