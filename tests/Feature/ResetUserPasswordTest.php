@@ -5,8 +5,8 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\User;
+use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Mail;
 
 class ResetUserPasswordTest extends TestCase
@@ -24,14 +24,10 @@ class ResetUserPasswordTest extends TestCase
 		]);
 
 		$response->assertRedirect('/show-email');
-		$response->assertSessionHas('success', 'Great! You have Successfully loggedin');
 
-		// Mail::assertSent(function (Mailable $mail) use ($user) {
-		// 	$mail->build();
-		// 	return $mail->hasTo($user->email) &&
-		// 		$mail->subject === 'Password Verification Mail' &&
-		// 		str_contains($mail->viewData['token'], $user->remember_token);
-		// });
+		Mail::assertSent(Mailer::class);
+
+		$response->assertSessionHas('success', 'Great! You have Successfully loggedin');
 	}
 
 	public function test_it_does_not_send_email_for_non_existent_user(): void
