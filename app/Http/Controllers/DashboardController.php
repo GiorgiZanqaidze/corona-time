@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Country;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
-	public function worldwide(): View
+	public function worldwide()
 	{
 		if (Auth::check()) {
 			$countryData = Country::all();
@@ -22,10 +21,10 @@ class DashboardController extends Controller
 			]);
 		}
 
-		return redirect('/')->withSuccess('Opps! You do not have access');
+		return redirect('/')->withErrors('Opps! You do not have access');
 	}
 
-	public function byCountry(): View
+	public function byCountry()
 	{
 		$countryData = Country::all();
 		$confirmed = $countryData->sum('confirmed');
@@ -56,6 +55,6 @@ class DashboardController extends Controller
 			]);
 		}
 
-		return redirect('/')->withSuccess('Opps! You do not have access');
+		return redirect('/')->withErrors('Opps! You do not have access');
 	}
 }
