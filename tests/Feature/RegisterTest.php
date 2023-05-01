@@ -157,16 +157,23 @@ class RegisterTest extends TestCase
 		$response->assertRedirect('/show-email');
 	}
 
-	public function test_verify_acount()
-	{
-		$rememberToken = Str::random(64);
-		$user = User::factory()->create([
-			'remember_token' => $rememberToken,
-		]);
+	 public function test_it_verifies_a_user_account()
+	 {
+	 	$user = User::factory()->create([
+	 		'email_verified' => 0,
+	 		'remember_token' => Str::random(60),
+	 	]);
 
-		$response = $this->get("account/verify/{$user->remember_token}");
+	 	$response = $this->get("account/verify/{$user->remember_token}");
 
-		$response->assertSuccessful();
-		$response->assertViewIs('confirmation-email');
-	}
+	 	$this->assertEquals(1, $user->fresh()->email_verified);
+	 	$response->assertViewIs('confirmation-email');
+	 }
+
+	 public function test_it_redirects_to_login_if_token_is_invalid()
+	 {
+	 	$response = $this->get('account/verify/invalid-token');
+
+	 	$response->assertRedirect(route('login'));
+	 }
 }

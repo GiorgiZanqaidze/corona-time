@@ -22,7 +22,7 @@ class DashboardController extends Controller
 			]);
 		}
 
-		return redirect('/')->withSuccess('Opps! You do not have access');
+		return redirect('/')->withErrors('Opps! You do not have access');
 	}
 
 	public function byCountry(): View
@@ -56,6 +56,6 @@ class DashboardController extends Controller
 			]);
 		}
 
-		return redirect('/')->withSuccess('Opps! You do not have access');
+		return redirect('/')->withErrors('Opps! You do not have access');
 	}
 }

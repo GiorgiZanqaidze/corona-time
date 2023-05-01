@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
-use Illuminate\View\View;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
@@ -29,7 +28,7 @@ class RegisterController extends Controller
 		return redirect('show-email')->withSuccess('Great! You have Successfully loggedin');
 	}
 
-	public function verifyAccount($token): View
+	public function verifyAccount($token)
 	{
 		$verifyUser = User::where('remember_token', $token)->first();
 
@@ -38,8 +37,9 @@ class RegisterController extends Controller
 				$verifyUser->email_verified = 1;
 				$verifyUser->save();
 			}
+			return view('confirmation-email');
 		}
 
-		return view('confirmation-email');
+		return redirect()->route('login');
 	}
 }
