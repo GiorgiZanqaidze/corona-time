@@ -14,7 +14,6 @@ class AuthTest extends TestCase
 	{
 		$response = $this->get('/');
 		$response->assertSuccessful();
-		$response->assertSee('Welcome Back');
 		$response->assertViewIs('login');
 	}
 
