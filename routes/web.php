@@ -36,7 +36,7 @@ Route::middleware('guest')->group(function () {
 	});
 
 	Route::controller(ResetPasswordController::class)->group(function () {
-		Route::post('reset-password', 'postPassword')->name('reset-password');
+		Route::post('reset-password', 'postPassword')->name('reset-password.post');
 		Route::get('account/verify/password/{token}', 'edit')->name('user.update');
 		Route::patch('account/verify/password/{token}', 'update')->name('user.edit');
 	});
