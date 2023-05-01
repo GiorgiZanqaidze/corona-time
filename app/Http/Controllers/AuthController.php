@@ -20,7 +20,9 @@ class AuthController extends Controller
 		if (Auth::attempt([$fieldType => $input['username'], 'password' => $input['password']], $request->has('remember'))) {
 			return redirect()->route('worldwide');
 		} else {
-			return redirect()->route('login');
+			return redirect()->route('login')->withErrors([
+				'username' => 'Please provide correct credentials',
+			]);
 		}
 	}
 

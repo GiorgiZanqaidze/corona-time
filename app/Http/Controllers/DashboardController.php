@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Country;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -26,7 +25,7 @@ class DashboardController extends Controller
 		return redirect('/')->withSuccess('Opps! You do not have access');
 	}
 
-	public function byCountry(Request $request): View
+	public function byCountry(): View
 	{
 		$countryData = Country::all();
 		$confirmed = $countryData->sum('confirmed');
