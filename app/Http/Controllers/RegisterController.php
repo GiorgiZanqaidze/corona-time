@@ -12,9 +12,7 @@ class RegisterController extends Controller
 {
 	public function postRegistration(StoreUserRequest $request): RedirectResponse
 	{
-		$request->validated();
-		$data = $request->post();
-		$createUser = User::create($data);
+		$createUser = User::create($request->validated());
 		$token = Str::random(64);
 		$createUser->remember_token = $token;
 		$createUser->password = bcrypt($request->password);

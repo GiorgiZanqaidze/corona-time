@@ -15,9 +15,6 @@ class ResetPasswordController extends Controller
 	{
 		$request->validated();
 		$user = User::where('email', $request->email)->first();
-		// if (!$user) {
-		// 	return redirect('reset-password')->withSuccess('There is no user related to this email');
-		// }
 		$token = $user->remember_token;
 		Mail::send('mails.password-mail', ['token' => $token], function ($message) use ($request) {
 			$message->to($request->email);
