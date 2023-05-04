@@ -9,7 +9,7 @@ class UpdateUserRequest extends FormRequest
 	public function rules(): array
 	{
 		$rules = [
-			'email'=> 'required|email|max:255',
+			'email'=> 'required|exists:users,email',
 		];
 
 		return $rules;

@@ -7,16 +7,6 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 Route::controller(AuthController::class)->group(function () {
 	Route::post('post-login', 'login')->middleware('guest')->name('login.post');
 	Route::post('logout', 'logout')->name('logout')->middleware(['auth', 'verify_email']);
@@ -49,5 +39,4 @@ Route::middleware('guest')->group(function () {
 	Route::get('confirmation-password', function () { return view('confirmation-password'); })->name('confirmation-password');
 });
 
-// language route
 Route::get('lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang.switch');
