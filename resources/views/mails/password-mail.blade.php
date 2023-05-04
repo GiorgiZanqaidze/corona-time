@@ -8,21 +8,23 @@
 </head>
 <body>
     <div class="flex" style="margin: 0 auto;
-    flex-direction: column;
-    gap: 10px;
     font-family: 'Inter';">
         <div class="center-div" style="display: block;
         margin: 0 auto;
         width: 400px;
         padding-bottom: 0;
         margin-bottom: 0;">
+            <div>
+                <img src="https://i.ibb.co/319cvdy/email-image.png" alt="email-image" border="0" >
+            </div>
             <h1 style="padding: 1rem;
-                color: white;
+                color: rgb(0, 0, 0);
                 border-radius: 8px;
                 width: 100%;
-                text-align: center;">Recover password</h1>
+                text-align: center;
+                width: 100%;">Recover password</h1>
             <p style="padding: 1rem;
-                color: white;
+                color: rgb(0, 0, 0);
                 border-radius: 8px;
                 width: 100%;
                 text-align: center;">click this button to recover a password</p>
