@@ -3,25 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Country;
-use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
 	public function worldwide()
 	{
-		if (Auth::check()) {
-			$countryData = Country::all();
-			$confirmed = $countryData->sum('confirmed');
-			$recovered = $countryData->sum('recovered');
-			$deaths = $countryData->sum('deaths');
-			return view('landing-worldwide', [
-				'confirmed' => $confirmed,
-				'recovered' => $recovered,
-				'deaths'    => $deaths,
-			]);
-		}
-
-		return redirect('/')->withErrors('Opps! You do not have access');
+		$countryData = Country::all();
+		$confirmed = $countryData->sum('confirmed');
+		$recovered = $countryData->sum('recovered');
+		$deaths = $countryData->sum('deaths');
+		return view('landing-worldwide', [
+			'confirmed' => $confirmed,
+			'recovered' => $recovered,
+			'deaths'    => $deaths,
+		]);
 	}
 
 	public function byCountry()
@@ -46,15 +41,11 @@ class DashboardController extends Controller
 			$country = Country::all();
 		}
 
-		if (Auth::check()) {
-			return view('landing-bycountry', [
-				'allCountry' => $country,
-				'confirmed'  => $confirmed,
-				'recovered'  => $recovered,
-				'deaths'     => $deaths,
-			]);
-		}
-
-		return redirect('/')->withErrors('Opps! You do not have access');
+		return view('landing-bycountry', [
+			'allCountry' => $country,
+			'confirmed'  => $confirmed,
+			'recovered'  => $recovered,
+			'deaths'     => $deaths,
+		]);
 	}
 }
