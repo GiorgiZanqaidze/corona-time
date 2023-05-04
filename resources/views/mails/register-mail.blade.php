@@ -16,13 +16,16 @@
         width: 400px;
         padding-bottom: 0;
         margin-bottom: 0;">
+            <div>
+                <img src="https://i.ibb.co/319cvdy/email-image.png" alt="email-image" border="0" >
+            </div>
             <h1 style="padding: 1rem;
-            color: white;
+            color: rgb(0, 0, 0);
             border-radius: 8px;
             width: 100%;
             text-align: center;">Confirmation email</h1>
             <p style="padding: 1rem;
-            color: white;
+            color: rgb(0, 0, 0);
             border-radius: 8px;
             width: 100%;
             text-align: center;">click this button to verify your email</p>

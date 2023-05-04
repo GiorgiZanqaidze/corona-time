@@ -26,10 +26,7 @@
                             <button @click="open = !open"><img src="{{asset('images/remix-icons-line-system-Group.png')}}" alt="arrow" class="text-sm inline"></button>
                             <div x-show="open" class="absolute right-0 flex flex-col gap-2 mt-2 justify-items-start bg-light-gray px-5">
                                 <button class="text-sm block py-2 pr-4 pl-3 text-gray-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 bold">{{ucwords(auth()->user()->username)}}</button>
-                                {{-- <form action="/logout" method="GET">
-                                    @csrf
-                                    <button class="text-sm sm:text-base">{{__('messages.logout')}}<button>
-                                </form> --}}
+                               
                                 <a href="/logout" class="text-sm sm:text-base">{{__('messages.logout')}}</a>
                             </div>
                         </div>

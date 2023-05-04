@@ -13,7 +13,7 @@
                 <p class="font-light text-xs text-gray text-xl">{{__('messages.enter_details')}}</p>
                 <div class="mb-6 relative">
                     <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{__('messages.username_or_email')}}</label>
-                    <input id="username" type="text" class="border-2 {{$errors->has('username') ? 'border-error-red' : ''}} {{!$errors->has('username') && $errors->any() ? 'border-green' : ''}} p-3 shadow-sm bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:shadow-sm-light" name="username" value="{{ old('username') }}" placeholder="{{__('messages.enter_unique')}}">
+                    <input id="username" type="text" class="border {{$errors->has('username') ? 'border-error-red' : 'border-borderCl'}} {{!$errors->has('username') && $errors->any() ? 'border-green' : 'border-borderCl'}} p-3 shadow-sm bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:shadow-sm-light" name="username" value="{{ old('username') }}" placeholder="{{__('messages.enter_unique')}}">
                     @error('username')
                         <span class="text-xs text-error-red"><img src="{{asset('images/remix-icons-fill-system-error-warning-fill.png')}}" class="inline mr-2"/>{{$message}}</span>
                     @enderror
@@ -23,7 +23,7 @@
                 </div>
                 <div class="mb-6 relative">
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{__('messages.password')}}</label>
-                    <input type="password" name="password" id="password" class="border-2 {{$errors->has('password') ? 'border-error-red' : ''}} {{!$errors->has('password') && $errors->any() ? 'border-green' : ''}} p-3 shadow-sm bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:shadow-sm-light" placeholder="{{__('messages.fill_in_password')}}">
+                    <input type="password" name="password" id="password" class="{{$errors->has('password') ? 'border-error-red' : 'border-borderCl'}} {{!$errors->has('password') && $errors->any() ? 'border-green' : 'border-borderCl'}} p-3 shadow-sm bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:shadow-sm-light" placeholder="{{__('messages.fill_in_password')}}">
                     @error('password')
                         <span class="text-xs text-error-red"><img src="{{asset('images/remix-icons-fill-system-error-warning-fill.png')}}" class="inline mr-2"/>{{$message}}</span>
                     @enderror
@@ -41,8 +41,8 @@
                 <span class="text-xs text-center text-gray">{{__('messages.dont_have_acount')}}? <strong><a href="/register" class="hover:underline text-dark">{{__('messages.sign_up_for_free')}}</a></strong></p>
             </form>
         </div>
-        <div class="hidden lg:block">
-            <img src="{{asset('images/Rectangle 1.png')}}" />
+        <div class="hidden lg:block min-height-screen">
+            <img src="{{asset('images/Rectangle 1.png')}}" style="height: 100%;"/>
         </div>
     </div>
 </x-layout>

@@ -9,8 +9,7 @@ class UpdateUserPasswordRequest extends FormRequest
 	public function rules(): array
 	{
 		$rules = [
-			'password'              => 'required|min:3|required_with:password_confirmation',
-			'password_confirmation' => 'required|string|min:3|same:password',
+			'password'              => 'required|confirmed|min:3',
 		];
 
 		return $rules;

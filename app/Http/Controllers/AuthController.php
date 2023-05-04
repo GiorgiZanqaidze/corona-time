@@ -22,6 +22,7 @@ class AuthController extends Controller
 		} else {
 			return redirect()->route('login')->withErrors([
 				'username' => 'Please provide correct credentials',
+				'password' => 'Please provide correct credentials',
 			]);
 		}
 	}

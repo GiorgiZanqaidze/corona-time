@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
 
@@ -12,16 +11,13 @@ class RegisterController extends Controller
 {
 	public function postRegistration(StoreUserRequest $request): RedirectResponse
 	{
-		$request->validated();
-		$data = $request->post();
-		$createUser = User::create($data);
-		$token = Str::random(64);
-		$createUser->remember_token = $token;
-		$createUser->password = bcrypt($request->password);
+		$createUser = User::create($request->validated());
+		$token = $request->remember_token;
+		$createUser->remember_token = $request->remember_token;
 		$createUser->save();
 
-		Mail::send('mails.register-mail', ['token' => $token], function ($message) use ($request) {
-			$message->to($request->email);
+		Mail::send('mails.register-mail', ['token' => $token], function ($message) use ($createUser) {
+			$message->to($createUser->email);
 			$message->subject('Email Verification Mail');
 		});
 
