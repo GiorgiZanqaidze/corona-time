@@ -11,7 +11,7 @@ use Illuminate\View\View;
 
 class ResetPasswordController extends Controller
 {
-	public function postPassword(UpdateUserRequest $request)
+	public function postPassword(UpdateUserRequest $request): RedirectResponse
 	{
 		$request->validated();
 		$user = User::where('email', $request->email)->first();
@@ -20,6 +20,8 @@ class ResetPasswordController extends Controller
 			$message->to($request->email);
 			$message->subject('Password Verification Mail');
 		});
+
+		return redirect('show-email')->withSuccess('Great! You have Successfully loggedin');
 	}
 
 	public function edit(string $token): View
