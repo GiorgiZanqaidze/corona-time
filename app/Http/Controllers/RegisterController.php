@@ -26,7 +26,6 @@ class RegisterController extends Controller
 
 	public function verifyAccount($token)
 	{
-		// dd($token);
 		$verifyUser = User::where('remember_token', $token)->first();
 
 		if (!is_null($verifyUser)) {
