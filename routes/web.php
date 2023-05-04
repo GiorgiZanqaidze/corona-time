@@ -31,12 +31,12 @@ Route::middleware('guest')->group(function () {
 		Route::patch('account/verify/password/{token}', 'update')->name('user.edit');
 	});
 
-	Route::get('/', function () { return view('login'); })->name('login');
-	Route::get('register', function () { return view('register'); })->name('register');
-	Route::get('show-email', function () { return view('show-email'); })->name('show-email');
-	Route::get('set-new-password', function () { return view('set-new-password'); })->name('set-new-password');
-	Route::get('reset-password', function () { return view('reset-password'); })->name('reset-password');
-	Route::get('confirmation-password', function () { return view('confirmation-password'); })->name('confirmation-password');
+	Route::view('/', 'login')->name('login');
+	Route::view('register', 'register')->name('register');
+	Route::view('show-email', 'show-email')->name('show-email');
+	Route::view('set-new-password', 'set-new-password')->name('set-new-password');
+	Route::view('reset-password', 'reset-password')->name('reset-password');
+	Route::view('confirmation-password', 'confirmation-password')->name('confirmation-password');
 });
 
 Route::get('lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang.switch');
