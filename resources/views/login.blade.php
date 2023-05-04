@@ -41,8 +41,8 @@
                 <span class="text-xs text-center text-gray">{{__('messages.dont_have_acount')}}? <strong><a href="/register" class="hover:underline text-dark">{{__('messages.sign_up_for_free')}}</a></strong></p>
             </form>
         </div>
-        <div class="hidden lg:block">
-            <img src="{{asset('images/Rectangle 1.png')}}" />
+        <div class="hidden lg:block min-height-screen">
+            <img src="{{asset('images/Rectangle 1.png')}}" style="height: 100%;"/>
         </div>
     </div>
 </x-layout>
