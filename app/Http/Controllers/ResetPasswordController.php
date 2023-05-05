@@ -31,10 +31,8 @@ class ResetPasswordController extends Controller
 
 	public function update(string $token, UpdateUserPasswordRequest $request): RedirectResponse
 	{
-		$request->validated();
 		$user = User::where('remember_token', $token)->first();
-		$user->password = bcrypt($request->password);
-		$user->update();
+		$user->update($request->validated());
 		return redirect()->route('confirmation-password');
 	}
 }
