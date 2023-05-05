@@ -4,7 +4,7 @@
             <div class="mb-10">
                 @include('components.lang-dropdown')
             </div>
-            <form class="flex flex-col gap-3" method="POST" action="/post-login">
+            <form class="flex flex-col gap-3 max-w-xs" method="POST" action="/post-login">
             @csrf
                 <div>
                     <img src="{{asset("images/Group 1@2x.png")}}" class="w-2/4"/>
@@ -13,17 +13,20 @@
                 <p class="font-light text-xs text-gray text-xl">{{__('messages.enter_details')}}</p>
                 <div class="mb-6 relative">
                     <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{__('messages.username_or_email')}}</label>
-                    <input id="username" type="text" class="border {{$errors->has('username') ? 'border-error-red' : 'border-borderCl'}} {{!$errors->has('username') && $errors->any() ? 'border-green' : 'border-borderCl'}} p-3 shadow-sm bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:shadow-sm-light" name="username" value="{{ old('username') }}" placeholder="{{__('messages.enter_unique')}}">
+                    <input id="username" type="text" class="border {{$errors->has('username') || session('message') ? 'border-error-red' : 'border-borderCl'}} {{!$errors->has('username') && $errors->any() ? 'border-green' : 'border-borderCl'}} p-3 shadow-sm bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:shadow-sm-light" name="username" value="{{ old('username') }}" placeholder="{{__('messages.enter_unique')}}">
                     @error('username')
                         <span class="text-xs text-error-red"><img src="{{asset('images/remix-icons-fill-system-error-warning-fill.png')}}" class="inline mr-2"/>{{$message}}</span>
                     @enderror
+                    @if (session('message'))
+                        <span class="text-xs text-error-red text-wrap"><img src="{{asset('images/remix-icons-fill-system-error-warning-fill.png')}}" class="inline mr-2"/>{{session('message')}}</span>
+                        @endif
                     @if (!$errors->has('username') && $errors->any())
                     <img src="{{asset('images/green-icon.png')}}" class="absolute right-2 bottom-[30%] translate-y-[50%]"/>
                     @endif
                 </div>
                 <div class="mb-6 relative">
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{__('messages.password')}}</label>
-                    <input type="password" name="password" id="password" class="{{$errors->has('password') ? 'border-error-red' : 'border-borderCl'}} {{!$errors->has('password') && $errors->any() ? 'border-green' : 'border-borderCl'}} p-3 shadow-sm bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:shadow-sm-light" placeholder="{{__('messages.fill_in_password')}}">
+                    <input type="password" name="password" id="password" class="{{$errors->has('password') || session('message') ? 'border-error-red' : 'border-borderCl'}} {{!$errors->has('password') && $errors->any() ? 'border-green' : 'border-borderCl'}} p-3 shadow-sm bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:shadow-sm-light" placeholder="{{__('messages.fill_in_password')}}">
                     @error('password')
                         <span class="text-xs text-error-red"><img src="{{asset('images/remix-icons-fill-system-error-warning-fill.png')}}" class="inline mr-2"/>{{$message}}</span>
                     @enderror
