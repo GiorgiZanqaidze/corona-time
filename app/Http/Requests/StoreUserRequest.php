@@ -22,7 +22,7 @@ class StoreUserRequest extends FormRequest
 	{
 		$token = Str::random(64);
 		$this->merge([
-			'remember_token' => $token,
+			'email_verification_token' => $token,
 		]);
 	}
 }

@@ -12,9 +12,9 @@ class RegisterController extends Controller
 	public function postRegistration(StoreUserRequest $request): RedirectResponse
 	{
 		$createUser = User::create($request->validated());
-		$token = $request->remember_token;
-		$createUser->remember_token = $request->remember_token;
-		$createUser->save();
+		$token = $request->email_verification_token;
+		$createUser->email_verification_token = $request->email_verification_token;
+		$createUser->update();
 
 		Mail::send('mails.register-mail', ['token' => $token], function ($message) use ($createUser) {
 			$message->to($createUser->email);
@@ -26,7 +26,7 @@ class RegisterController extends Controller
 
 	public function verifyAccount($token)
 	{
-		$verifyUser = User::where('remember_token', $token)->first();
+		$verifyUser = User::where('email_verification_token', $token)->first();
 
 		if (!is_null($verifyUser)) {
 			if (!$verifyUser->email_verified) {
