@@ -15,7 +15,7 @@ class ResetPasswordController extends Controller
 	{
 		$request->validated();
 		$user = User::where('email', $request->email)->first();
-		$token = $user->remember_token;
+		$token = $user->email_verification_token;
 		Mail::send('mails.password-mail', ['token' => $token], function ($message) use ($request) {
 			$message->to($request->email);
 			$message->subject('Password Verification Mail');
@@ -31,7 +31,7 @@ class ResetPasswordController extends Controller
 
 	public function update(string $token, UpdateUserPasswordRequest $request): RedirectResponse
 	{
-		$user = User::where('remember_token', $token)->first();
+		$user = User::where('email_verification_token', $token)->first();
 		$user->update($request->validated());
 		return redirect()->route('confirmation-password');
 	}
