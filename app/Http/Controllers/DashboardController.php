@@ -26,19 +26,20 @@ class DashboardController extends Controller
 		$recovered = $countryData->sum('recovered');
 		$deaths = $countryData->sum('deaths');
 
-		$name = request('search');
-		$sort = request('sort_by');
+		$country = Country::all();
+
 		if (request('search')) {
-			$country = Country::where('name', 'like', '%' . $name . '%')->orderBy('name')->get();
-		} elseif (request('sort_by')) {
-			$country = Country::orderBy($sort)
-			->get();
-		} elseif (request('sort_by')) {
-			$country = Country::where('name', 'like', '%' . $name . '%')
-			->orderBy($sort)
-			->get();
-		} else {
-			$country = Country::all();
+			$country = Country::where('name->en', 'like', '%' . request('search') . '%')
+			->orWhere('name->ka', 'like', '%' . request('search') . '%')->get();
+		}
+
+		if (request('sort_by')) {
+			$country = Country::orderBy(request('sort_by'), 'asc')->get();
+		}
+
+		if (request('search') && request('sort_by')) {
+			$country = Country::where('name->en', 'like', '%' . request('search') . '%')
+			->orWhere('name->ka', 'like', '%' . request('search') . '%')->orderBy(request('sort_by'), 'asc')->get();
 		}
 
 		return view('landing-bycountry', [

@@ -42,22 +42,82 @@
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-light-gray border rounded-lg overflow-hidden relative">
                             <thead class="text-xs text-gray-700 uppercase bg-light-gray dark:bg-gray-700 dark:text-gray-400">
                                 <tr>    
-                                    <th scope="col" class="py-3 w-10 pr-1 text-[10px] sm:text-[14px] md:text-sm">
-                                        <a href="?sort_by=name&{{http_build_query(request()->except('sort_by'))}}">{{__('messages.location')}}
-                                            {{-- <div class="inline">
-                                                <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-up-fill.png')}}" class="inline" alt="">
-                                                <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill.png')}}" class="inline" alt="">
-                                            </div> --}}
+                                    <th scope="col" class="py-3 w-10 sm:pr-1 text-[10px] sm:text-[14px] sm:p-3 md:text-sm">
+                                        <a href="?sort_by=name&{{http_build_query(request()->except('sort_by'))}}">
+                                            <p class="inline ">{{__('messages.location')}}</p>
+                                            <div class="inline-block ml-1">
+                                                <div class="flex flex-col">
+                                                    <div>
+                                                        <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-up-fill.png')}}" alt="">
+                                                    </div>
+                                                    <div>
+                                                        @if (request('sort_by') === 'name')
+                                                        <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill-full.png')}}" alt="">
+                                                            @else
+                                                            <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill.png')}}" alt="">
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </a>
                                     </th>
-                                    <th scope="col" class="py-3 pr-1 text-[10px] sm:text-[14px] md:text-sm">
-                                        <a href="?sort_by=confirmed&{{http_build_query(request()->except('sort_by'))}}">{{__('messages.new_cases')}}</a>
+                                    
+                                    <th scope="col" class="py-3 sm:pr-1 text-[10px] sm:text-[14px] md:text-sm">
+                                        <a href="?sort_by=confirmed&{{http_build_query(request()->except('sort_by'))}}">
+                                            <p class="inline ">{{__('messages.new_cases')}}</p>
+                                            <div class="inline-block ml-1">
+                                                <div class="flex flex-col">
+                                                    <div>
+                                                        <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-up-fill.png')}}" alt="">
+                                                    </div>
+                                                    <div>
+                                                        @if (request('sort_by') === 'confirmed')
+                                                        <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill-full.png')}}" alt="">
+                                                            @else
+                                                            <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill.png')}}" alt="">
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </th>
-                                    <th scope="col" class="py-3 pr-1 text-[10px] sm:text-[14px] md:text-sm">
-                                        <a href="?sort_by=deaths&{{http_build_query(request()->except('sort_by'))}}">{{__('messages.deaths')}}</a>
+                                    <th scope="col" class="py-3 sm:pr-1 text-[10px] sm:text-[14px] md:text-sm">
+                                        <a href="?sort_by=deaths&{{http_build_query(request()->except('sort_by'))}}">
+                                            <p class="inline ">{{__('messages.deaths')}}</p>
+                                            <div class="inline-block ml-1">
+                                                <div class="flex flex-col">
+                                                    <div>
+                                                        <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-up-fill.png')}}" alt="">
+                                                    </div>
+                                                    <div>
+                                                        @if (request('sort_by') === 'deaths')
+                                                        <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill-full.png')}}" alt="">
+                                                            @else
+                                                            <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill.png')}}" alt="">
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </th>
-                                    <th scope="col" class="py-3 pr-1 text-[10px] sm:text-[14px] md:text-sm">
-                                        <a href="?sort_by=recovered&{{http_build_query(request()->except('sort_by'))}}">{{__('messages.recovered')}}</a>
+                                    <th scope="col" class="py-3 sm:pr-1 text-[10px] sm:text-[14px] md:text-sm">
+                                        <a href="?sort_by=recovered&{{http_build_query(request()->except('sort_by'))}}">
+                                            <p class="inline ">{{__('messages.recovered')}}</p>
+                                            <div class="inline-block ml-1">
+                                                <div class="flex flex-col">
+                                                    <div>
+                                                        <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-up-fill.png')}}" alt="">
+                                                    </div>
+                                                    <div>
+                                                        @if (request('sort_by') === 'recovered')
+                                                        <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill-full.png')}}" alt="">
+                                                            @else
+                                                            <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill.png')}}" alt="">
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </th>
                                 </tr>
                             </thead>
