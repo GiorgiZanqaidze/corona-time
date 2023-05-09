@@ -3,7 +3,7 @@
 return [
 	'logout'                                   => 'Log Out',
 	'worldwide_statistics'                     => 'Worldwide Statistics',
-	'Worldwide'                                => 'worldwide',
+	'Worldwide'                                => 'Worldwide',
 	'by_country'                               => 'By Country',
 	'statistics_by_country'                    => 'Statistics by country',
 	'search_by_country'                        => 'Search by country',
