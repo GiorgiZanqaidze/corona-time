@@ -7,7 +7,6 @@
         }
 
         ::-webkit-scrollbar-track {
-        /* box-shadow: inset 0 0 10px #808189; */
         border-radius: 10px;
         }
 
@@ -16,6 +15,38 @@
         background: #808189; 
         box-shadow: inset 0 0 6px #808189; 
         }
+
+        * {
+            margin: 0px;
+            padding: 0;
+        }
+        .heading {
+            display: flex;
+            background-color: #232f3e;
+        }
+        .outer-wrapper {
+            margin: 0 auto;
+            border-radius: 10px;
+            max-width: fit-content;
+        }
+        .table-wrapper {
+            overflow-y: scroll;
+            max-height: 66.4vh;
+        }
+
+        table {
+            min-width: 90vw;
+        }
+
+        table th{
+            position: sticky; 
+            top: -1px;
+            text-align: center;
+        } 
+        table td {
+            text-align: left;
+        }
+
     </style>
     <x-header infoType="{{__('messages.statistics_by_country')}}">
         <div>
@@ -37,87 +68,86 @@
                 </form>
             </div>
             @if ($allCountry->count())
-                <div class="relative h-96 overflow-y-scroll shadow-sm">
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-light-gray border rounded-lg overflow-hidden relative">
-                        <thead class="text-xs text-gray-700 uppercase bg-light-gray dark:bg-gray-700 dark:text-gray-400">
-                            <tr>    
-                                <th scope="col" class="py-2 sm:py-3 w-10 sm:pr-1 text-[8px] sm:text-[14px] sm:p-3 md:text-sm">
-                                    <a href="?sort_by=name&{{http_build_query(request()->except('sort_by'))}}" class="flex items-center">
-                                        <p class="inline">{{__('messages.location')}}</p>
-                                        <div class="inline-block ml-1">
-                                            <div class="flex flex-col">
-                                                <div>
-                                                    <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-up-fill.png')}}" class="w-2 sm:w-auto">
-                                                </div>
-                                                <div>
-                                                    @if (request('sort_by') === 'name')
-                                                    <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill-full.png')}}" class="w-2 sm:w-auto">
-                                                        @else
-                                                        <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill.png')}}" class="w-2 sm:w-auto">
-                                                    @endif
-                                                </div>
-                                            </div>
+                <div class="outer-wrapper">
+                    <div class="table-wrapper">
+                      <table class="text-sm text-left text-gray-500 dark:text-gray-400 border-light-gray border rounded-lg">
+                        <thead class="text-xs text-gray-700 uppercase bg-light-gray">
+                            <th scope="col" class="py-2 sm:py-3 w-10 sm:pr-1 text-[8px] sm:text-[14px] sm:p-3 md:text-sm bg-light-gray ">
+                              <a href="?sort_by=name&{{http_build_query(request()->except('sort_by'))}}" class="flex items-center">
+                                  <p class="inline">{{__('messages.location')}}</p>
+                                  <div class="inline-block ml-1">
+                                      <div class="flex flex-col">
+                                          <div>
+                                              <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-up-fill.png')}}" class="w-2 sm:w-auto">
+                                          </div>
+                                          <div>
+                                              @if (request('sort_by') === 'name')
+                                              <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill-full.png')}}" class="w-2 sm:w-auto">
+                                                  @else
+                                                  <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill.png')}}" class="w-2 sm:w-auto">
+                                              @endif
+                                          </div>
+                                      </div>
+                                  </div>
+                              </a>
+                          </th>
+                          <th scope="col" class="py-2 sm:py-3 sm:pr-1 text-[8px] sm:text-[14px] md:text-sm bg-light-gray">
+                            <a href="?sort_by=confirmed&{{http_build_query(request()->except('sort_by'))}}" class="flex items-center">
+                                <p class="inline">{{__('messages.new_cases')}}</p>
+                                <div class="inline-block ml-1">
+                                    <div class="flex flex-col">
+                                        <div>
+                                            <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-up-fill.png')}}" class="w-2 sm:w-auto">
                                         </div>
-                                    </a>
-                                </th>
-                                <th scope="col" class="py-2 sm:py-3 sm:pr-1 text-[8px] sm:text-[14px] md:text-sm">
-                                    <a href="?sort_by=confirmed&{{http_build_query(request()->except('sort_by'))}}" class="flex items-center">
-                                        <p class="inline">{{__('messages.new_cases')}}</p>
-                                        <div class="inline-block ml-1">
-                                            <div class="flex flex-col">
-                                                <div>
-                                                    <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-up-fill.png')}}" class="w-2 sm:w-auto">
-                                                </div>
-                                                <div>
-                                                    @if (request('sort_by') === 'confirmed')
-                                                    <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill-full.png')}}" class="w-2 sm:w-auto">
-                                                        @else
-                                                        <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill.png')}}" class="w-2 sm:w-auto">
-                                                    @endif
-                                                </div>
-                                            </div>
+                                        <div>
+                                            @if (request('sort_by') === 'confirmed')
+                                            <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill-full.png')}}" class="w-2 sm:w-auto">
+                                                @else
+                                                <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill.png')}}" class="w-2 sm:w-auto">
+                                            @endif
                                         </div>
-                                    </a>
-                                </th>
-                                <th scope="col" class="py-2 sm:py-3 sm:pr-1 text-[8px] sm:text-[14px] md:text-sm">
-                                    <a href="?sort_by=deaths&{{http_build_query(request()->except('sort_by'))}}" class="flex items-center">
-                                        <p class="inline">{{__('messages.deaths')}}</p>
-                                        <div class="inline-block ml-1">
-                                            <div class="flex flex-col">
-                                                <div>
-                                                    <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-up-fill.png')}}" class="w-2 sm:w-auto">
-                                                </div>
-                                                <div>
-                                                    @if (request('sort_by') === 'deaths')
-                                                    <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill-full.png')}}" class="w-2 sm:w-auto">
-                                                        @else
-                                                        <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill.png')}}" class="w-2 sm:w-auto">
-                                                    @endif
-                                                </div>
-                                            </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </th>
+                        <th scope="col" class="py-2 sm:py-3 sm:pr-1 text-[8px] sm:text-[14px] md:text-sm bg-light-gray">
+                            <a href="?sort_by=deaths&{{http_build_query(request()->except('sort_by'))}}" class="flex items-center">
+                                <p class="inline">{{__('messages.deaths')}}</p>
+                                <div class="inline-block ml-1">
+                                    <div class="flex flex-col">
+                                        <div>
+                                            <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-up-fill.png')}}" class="w-2 sm:w-auto">
                                         </div>
-                                    </a>
-                                </th>
-                                <th scope="col" class="py-2 sm:py-3 sm:pr-1 text-[8px] sm:text-[14px] md:text-sm" class="flex items-center">
-                                    <a href="?sort_by=recovered&{{http_build_query(request()->except('sort_by'))}}">
-                                        <p class="inline ">{{__('messages.recovered')}}</p>
-                                        <div class="inline-block ml-1">
-                                            <div class="flex flex-col">
-                                                <div>
-                                                    <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-up-fill.png')}}" class="w-2 sm:w-auto">
-                                                </div>
-                                                <div>
-                                                    @if (request('sort_by') === 'recovered')
-                                                    <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill-full.png')}}" class="w-2 sm:w-auto">
-                                                        @else
-                                                        <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill.png')}}" class="w-2 sm:w-auto">
-                                                    @endif
-                                                </div>
-                                            </div>
+                                        <div>
+                                            @if (request('sort_by') === 'deaths')
+                                            <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill-full.png')}}" class="w-2 sm:w-auto">
+                                                @else
+                                                <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill.png')}}" class="w-2 sm:w-auto">
+                                            @endif
                                         </div>
-                                    </a>
-                                </th>
-                            </tr>
+                                    </div>
+                                </div>
+                            </a>
+                        </th>
+                        <th scope="col" class="py-2 sm:py-3 sm:pr-1 text-[8px] sm:text-[14px] md:text-sm bg-light-gray">
+                            <a href="?sort_by=recovered&{{http_build_query(request()->except('sort_by'))}}" class="flex items-center">
+                                <p class="inline text-left">{{__('messages.recovered')}}</p>
+                                <div class="inline-block ml-1">
+                                    <div class="flex flex-col">
+                                        <div>
+                                            <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-up-fill.png')}}" class="w-2 sm:w-auto">
+                                        </div>
+                                        <div>
+                                            @if (request('sort_by') === 'recovered')
+                                            <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill-full.png')}}" class="w-2 sm:w-auto">
+                                                @else
+                                                <img src="{{asset('images/remix-icons-fill-system-arrow-drop-down-fill.png')}}" class="w-2 sm:w-auto">
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </th>
                         </thead>
                         <tbody class="bg-blue-500">
                             <tr class="bg-white border-b dark:bg-gray-800 border-light-gray">
@@ -151,8 +181,9 @@
                                 </tr>
                             @endforeach
                         </tbody>
-                    </table>
-                </div>
+                      </table>
+                    </div>
+                  </div>
             @endif
         </div>
     </x-header>
