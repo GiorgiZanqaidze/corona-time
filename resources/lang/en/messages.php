@@ -3,7 +3,7 @@
 return [
 	'logout'                                   => 'Log Out',
 	'worldwide_statistics'                     => 'Worldwide Statistics',
-	'Worldwide'                                => 'worldwide',
+	'Worldwide'                                => 'Worldwide',
 	'by_country'                               => 'By Country',
 	'statistics_by_country'                    => 'Statistics by country',
 	'search_by_country'                        => 'Search by country',
@@ -44,4 +44,8 @@ return [
 	'deaths'                                   => 'Deaths',
 	'recovered'                                => 'Recovered',
 	'remember_device'                          => 'Remember this device',
+	'click_recover_btn'                        => 'click this button to recover a password',
+	'confirmation'                             => 'Confirmation email',
+	'click_verify_btn'                         => 'click this button to verify your email',
+	'verify'                                   => 'VERIFY EMAIL',
 ];

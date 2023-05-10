@@ -23,12 +23,12 @@
             color: rgb(0, 0, 0);
             border-radius: 8px;
             width: 100%;
-            text-align: center;">Confirmation email</h1>
+            text-align: center;">{{__('messages.confirmation')}}</h1>
             <p style="padding: 1rem;
             color: rgb(0, 0, 0);
             border-radius: 8px;
             width: 100%;
-            text-align: center;">click this button to verify your email</p>
+            text-align: center;">{{__('messages.click_verify_btn')}}</p>
             <div class="verify" style="width: 100%;
             margin-left: 20px;
             margin-right: 20px;
@@ -40,7 +40,7 @@
                 color: white;
                 border-radius: 8px;
                 width: 100%;
-                text-align: center;">VERIFY EMAIL</a>
+                text-align: center;">{{__('messages.verify')}}</a>
             </div>
         </div>
     </div>

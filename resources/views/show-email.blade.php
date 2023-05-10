@@ -5,7 +5,7 @@
                 <img src="{{asset("images/Group 1@2x.png")}}" class="w-2/4"/>
             </div>
             <div class="flex justify-center">
-                <img src="{{asset(asset('images/icons8-checked 1.png'))}}" class="w-14"/>
+                <img src="{{asset(asset('images/icons8-checkmark.gif'))}}" class="w-14"/>
             </div>
             <p class="mt-5">{{__('messages.email_confirmation')}}</p>
         </div>

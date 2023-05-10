@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(AuthController::class)->group(function () {
 	Route::post('post-login', 'login')->middleware('guest')->name('login.post');
-	Route::post('logout', 'logout')->name('logout')->middleware(['auth', 'verify_email']);
+	Route::get('logout', 'logout')->name('logout')->middleware(['auth', 'verify_email']);
 });
 
 Route::middleware(['auth', 'verify_email'])->group(function () {

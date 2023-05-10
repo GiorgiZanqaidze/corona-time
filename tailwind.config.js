@@ -19,7 +19,8 @@ module.exports = {
             borderCl: "#E6E6E7",
         },
         screens: {
-            sm: "576px",
+            xs: "400px",
+            sm: "730px",
             md: "960px",
             lg: "1440px",
         },
