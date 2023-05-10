@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
+use App\Mail\VerifyEmailMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
@@ -16,10 +17,7 @@ class RegisterController extends Controller
 		$createUser->email_verification_token = $request->email_verification_token;
 		$createUser->update();
 
-		Mail::send('mails.register-mail', ['token' => $token], function ($message) use ($createUser) {
-			$message->to($createUser->email);
-			$message->subject('Email Verification Mail');
-		});
+		Mail::to("$createUser->email")->send(new VerifyEmailMail($token));
 
 		return redirect('show-email')->withSuccess('Great! You have Successfully loggedin');
 	}

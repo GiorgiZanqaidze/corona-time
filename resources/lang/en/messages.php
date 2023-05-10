@@ -44,4 +44,8 @@ return [
 	'deaths'                                   => 'Deaths',
 	'recovered'                                => 'Recovered',
 	'remember_device'                          => 'Remember this device',
+	'click_recover_btn'                        => 'click this button to recover a password',
+	'confirmation'                             => 'Confirmation email',
+	'click_verify_btn'                         => 'click this button to verify your email',
+	'verify'                                   => 'VERIFY EMAIL',
 ];

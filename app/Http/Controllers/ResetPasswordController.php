@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateUserPasswordRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Mail\ResetPasswordMail;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Mail;
@@ -16,10 +17,8 @@ class ResetPasswordController extends Controller
 		$request->validated();
 		$user = User::where('email', $request->email)->first();
 		$token = $user->email_verification_token;
-		Mail::send('mails.password-mail', ['token' => $token], function ($message) use ($request) {
-			$message->to($request->email);
-			$message->subject('Password Verification Mail');
-		});
+
+		Mail::to("$user->email")->send(new ResetPasswordMail($token));
 
 		return redirect('show-email')->withSuccess('Great! You have Successfully loggedin');
 	}

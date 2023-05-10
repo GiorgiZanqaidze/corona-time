@@ -22,12 +22,12 @@
                 border-radius: 8px;
                 width: 100%;
                 text-align: center;
-                width: 100%;">Recover password</h1>
+                width: 100%;">{{__('messages.reset_password')}}</h1>
             <p style="padding: 1rem;
                 color: rgb(0, 0, 0);
                 border-radius: 8px;
                 width: 100%;
-                text-align: center;">click this button to recover a password</p>
+                text-align: center;">{{__('messages.click_recover_btn')}}</p>
             <div class="verify" style="width: 100%;
             margin-left: 20px;
             margin-right: 20px;
@@ -39,7 +39,7 @@
                 color: white;
                 border-radius: 8px;
                 width: 100%;
-                text-align: center;">RECOVER PASSWORD</a>
+                text-align: center;">{{__('messages.reset_password')}}</a>
             </div>
         </div>
     </div>
